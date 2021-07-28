@@ -12,12 +12,12 @@ import javax.persistence.Id
 @Data
 //@NoArgsConstructor
 //@AllArgsConstructor
-class User(
+data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Int = 0,
     var name: String = "",
-    var email: String = ""
+    var address: String = ""
 ) {
 //    constructor(name: String, email: String) : this(id = 0, name = name, email = email)
 }
