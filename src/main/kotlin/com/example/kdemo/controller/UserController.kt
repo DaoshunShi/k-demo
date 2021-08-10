@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
-@Controller
+@RestController
 @RequestMapping("user")
 class UserController {
 
@@ -47,7 +47,7 @@ class UserController {
     @ResponseBody
     @Foozy
     fun getAllUsers(): MutableIterable<User> {
-        logger.info("find all users")
+        logger.debug("find all users")
         return userRepository.findAll()
     }
 
