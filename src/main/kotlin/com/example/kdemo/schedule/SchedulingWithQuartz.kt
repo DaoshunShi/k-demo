@@ -22,14 +22,14 @@ class SchedulingWithQuartz {
             .build()
     }
     
-    @Bean
-    fun trigger(@Qualifier("jobDetail") job: JobDetail?): Trigger? {
-        return TriggerBuilder.newTrigger().forJob(job)
-            .withIdentity("Qrtz_Trigger")
-            .withDescription("Sample trigger")
-            .withSchedule(CronScheduleBuilder.cronSchedule("*/5 * * * * ?"))
-            .build()
-    }
+    // @Bean
+    // fun trigger(@Qualifier("jobDetail") job: JobDetail?): Trigger? {
+    //     return TriggerBuilder.newTrigger().forJob(job)
+    //         .withIdentity("Qrtz_Trigger")
+    //         .withDescription("Sample trigger")
+    //         .withSchedule(CronScheduleBuilder.cronSchedule("*/5 * * * * ?"))
+    //         .build()
+    // }
     
 }
 
