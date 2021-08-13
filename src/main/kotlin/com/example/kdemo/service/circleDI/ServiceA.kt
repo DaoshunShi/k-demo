@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service
 class ServiceA {
     @Autowired
     lateinit var serviceB: ServiceB
+    
+    fun printA() {
+        println("AAAA")
+    }
 }
 
 
