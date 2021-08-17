@@ -13,15 +13,15 @@ data class WmsOrderLog(
     @Column(length = 50)
     var id: String = IdHelper.objectIdStr(),
     
-    val createdOn: Instant = Instant.now(),
+    var createdOn: Instant = Instant.now(),
     
     @Column(length = 50)
-    val orderId: String,
+    var orderId: String,
     
-    val level: WmsOrderLogLevel = WmsOrderLogLevel.Info,
+    var level: WmsOrderLogLevel = WmsOrderLogLevel.Info,
     
     @Column(length = ContentMaxLen)
-    val content: String,
+    var content: String,
 ) {
     
     companion object {

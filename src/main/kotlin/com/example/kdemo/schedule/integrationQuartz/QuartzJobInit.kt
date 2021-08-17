@@ -16,7 +16,7 @@ class QuartzJobInit(
     @Throws(Exception::class)
     override fun run(vararg args: String) {
         // 每十秒执行一次
-        quartzUtils.addSingleJob(QuartzDemoJob::class.java, "demo-job", 10)
-        quartzUtils.addCronJob(QuartzDemoJob::class.java, "demo-cron-job", "*/10 * * * * ?")
+        // quartzUtils.addSingleJob(QuartzDemoJob::class.java, "demo-job", 10)
+        // quartzUtils.addCronJob(QuartzDemoJob::class.java, "demo-cron-job", "*/10 * * * * ?")
     }
 }

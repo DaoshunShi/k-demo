@@ -1,5 +1,7 @@
 package com.example.kdemo.service.sqlTest
 
+import com.example.kdemo.entity.WmsOrderLog
+import org.hibernate.SQLQuery
 import org.hibernate.query.internal.NativeQueryImpl
 import org.hibernate.transform.Transformers
 import org.slf4j.LoggerFactory
@@ -21,6 +23,14 @@ class SqlExecutorService(private val entityManager: EntityManager) {
         val query = entityManager.createNativeQuery(sql)
             .unwrap(NativeQueryImpl::class.java)
             .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP)
+        return query.resultList
+    }
+    
+    @Query
+    fun queryEntityBySql(sql: String): MutableList<out Any>? {
+        val query = entityManager.createNativeQuery(sql)
+            .unwrap(SQLQuery::class.java)
+            .setResultTransformer(Transformers.aliasToBean(WmsOrderLog::class.java))
         return query.resultList
     }
     

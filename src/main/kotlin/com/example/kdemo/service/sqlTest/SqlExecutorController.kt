@@ -18,9 +18,19 @@ class SqlExecutorController(private val sqlExecutorService: SqlExecutorService) 
     fun query1(): String {
         val sql = "select * from wms_order_log limit 10;"
         val res = sqlExecutorService.queryBySql(sql)
-        logger.info(JsonHelper.mapper.writeValueAsString(res))
+        // logger.info(JsonHelper.mapper.writeValueAsString(res))
         return JsonHelper.mapper.writeValueAsString(res)
     }
+    
+    @GetMapping("query2")
+    @ResponseBody
+    fun query2(): String {
+        val sql = "select * from wms_order_log limit 10;"
+        val res = sqlExecutorService.queryEntityBySql(sql)
+        // logger.info(JsonHelper.mapper.writeValueAsString(res))
+        return JsonHelper.mapper.writeValueAsString(res)
+    }
+    
     
     @GetMapping("execute1")
     @ResponseBody
