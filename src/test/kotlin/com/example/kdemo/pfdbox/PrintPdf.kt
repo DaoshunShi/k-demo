@@ -1,9 +1,11 @@
 package com.example.kdemo.pfdbox
 
 import org.apache.pdfbox.pdmodel.PDDocument
+import org.apache.pdfbox.pdmodel.PDPage
+import org.apache.pdfbox.printing.Orientation
 import org.apache.pdfbox.printing.PDFPageable
 import org.apache.pdfbox.printing.PDFPrintable
-import org.apache.pdfbox.printing.Scaling
+import java.awt.print.Book
 import java.awt.print.PageFormat
 import java.awt.print.Paper
 import java.awt.print.PrinterJob
@@ -19,9 +21,10 @@ fun main() {
     // val file = File("D:\\Project\\Seer\\SeerLaProjects\\mwms\\BeiZiSuo2\\files\\tmp\\6137564B08E8036FC7978F4A-out.pdf")
     // val file = File("D:\\Project\\Seer\\SeerLaProjects\\mwms\\BeiZiSuo2\\files\\tmp\\6137595E08E8036FC7978F54-out.pdf")
     // val file = File("D:\\Project\\Seer\\mwms-server\\standard-project\\files\\tmp\\6137681A28C1C3049FEC8BCE-out.pdf")
-    val file = File("D:\\Project\\Seer\\SeerLaProjects\\mwms\\BeiZiSuo2\\files\\tmp\\613768E85E20DE59D3C03660-out.pdf")
+    val file = File("D:\\Project\\Seer\\mwms-server\\standard-project\\files\\tmp\\615291888457681C05377C6D.pdf")
     
-    val printService = findPrintService("SEER-PRINTER-3-1")
+    // val printService = findPrintService("SEER-PRINTER-3-1")
+    val printService = findPrintService("TOSHIBA B-EX6T3 (305 dpi)")
     
     val objs = printService!!.getSupportedAttributeValues(Media::class.java, null, null) as Array<Media>
     for (obj in objs) {
@@ -35,27 +38,73 @@ fun main() {
     PDDocument.load(file).use { document ->
         
         val job = PrinterJob.getPrinterJob()
-    
+        
+        // job.printService = printService
+        // // val p =PDPage( PDRectangle.A4)
+        // // job.setPageable(PDFPageable(document, Orientation.LANDSCAPE, true))
+        // // val pageFormat = PageFormat()
+        // // pageFormat.paper = getPaper("A4")
+        // // pageFormat.orientation = PageFormat.LANDSCAPE
+        // //
+        // job.setPageable(PDFPageable(document))
+        // //
+        // //
+        // // val pdfPrintable = PDFPrintable(document, Scaling.SHRINK_TO_FIT)
+        // // val pdfPageable = PDFPageable(document)
+        // // pdfPageable.append(pdfPrintable, pageFormat, document.numberOfPages)
+        // // job.setPageable(pdfPageable)
+        //
+        // val box = document.pages.first().mediaBox
+        // println("width : ${box.width}")
+        // println("height : ${box.height}")
+        
+        // -------
+        // PageFormat.PORTRAIT works!
+        // PageFormat.LANDSCAPE works! but it does not works on label printer
+        
+        val cmPerInch = 2.54
+        // val width = 16 * 72 / cmPerInch * 6
+        // val height = 4.6 * 72 / cmPerInch * 6
+        val width = 16 * 72 / cmPerInch * 6
+        val height = 4.6 * 72 / cmPerInch * 6
+        val paper = Paper()
+        paper.setSize(width, height)
+        
+        val pageFormat = PageFormat()
+        // pageFormat.orientation = PageFormat.PORTRAIT
+        pageFormat.paper = paper
+
         job.printService = printService
-        // val p =PDPage( PDRectangle.A4)
-        // job.setPageable(PDFPageable(document, Orientation.LANDSCAPE, true))
-        // val pageFormat = PageFormat()
-        // pageFormat.paper = getPaper("A4")
-        // pageFormat.orientation = PageFormat.LANDSCAPE
-        //
-        job.setPageable(PDFPageable(document))
-        //
-        //
-        // val pdfPrintable = PDFPrintable(document, Scaling.SHRINK_TO_FIT)
-        // val pdfPageable = PDFPageable(document)
-        // pdfPageable.append(pdfPrintable, pageFormat, document.numberOfPages)
-        // job.setPageable(pdfPageable)
-    
+
+        val book = Book()
+        val printable = PDFPrintable(document)
+        book.append(printable, pageFormat)
+        job.setPageable(book)
+
         val box = document.pages.first().mediaBox
         println("width : ${box.width}")
         println("height : ${box.height}")
-    
-    
+        
+        // -------------
+        
+        // 不起作用
+        // val box = document.pages.first().mediaBox
+        // println("width : ${box.width}")
+        // println("height : ${box.height}")
+        //
+        // // val format = document.getPageFormat(1)
+        //
+        // var pageable = PDFPageable(document)
+        // // val cPageable = PDFPageable(document, Orientation.LANDSCAPE)
+        // val cPageable = PDFPageable(document)
+        // if (box.width > box.height) {
+        //     pageable = cPageable
+        // }
+        //
+        // job.printService = printService
+        // job.setPageable(pageable)
+
+        println("---------")
         job.print()
     }
     

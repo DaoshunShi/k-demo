@@ -57,7 +57,7 @@ dependencies {
     
     implementation("org.mongodb:bson:4.3.0")
     
-    
+    implementation("org.apache.pdfbox:pdfbox:2.0.22")
     
     
     compileOnly("org.projectlombok:lombok")
