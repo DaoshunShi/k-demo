@@ -1,6 +1,7 @@
 package com.example.kdemo.inv
 
 import com.example.kdemo.ObservableError
+import com.example.kdemo.inv.domain.InvChange
 import com.example.kdemo.inv.domain.InvLayout
 import com.example.kdemo.inv.repo.ContainerRepo
 import com.example.kdemo.inv.repo.InvChangeRepo
@@ -35,6 +36,8 @@ class InvServer(
             summary.stockQty += it.qty
             summary.processingQty -= it.qty
             summaryRepo.save(summary)
+            
+            recordChanges(it.part, it.qty, "", bin)
         }
     }
     
@@ -52,6 +55,8 @@ class InvServer(
             summary.stockQty -= it.qty
             summary.processingQty += it.qty
             summaryRepo.save(summary)
+            
+            recordChanges(it.part, it.qty, bin, "")
         }
     }
     
@@ -73,9 +78,13 @@ class InvServer(
             if (container.isBlank()) {
                 // 无容器装箱
                 summary.stockQty += it.qty
+                
+                recordChanges(it.part, it.qty, "", bin)
             } else {
                 // 有容器装箱
                 summary.processingQty += it.qty
+                
+                recordChanges(it.part, it.qty, "", bin)
             }
             
             summaryRepo.save(summary)
@@ -125,9 +134,13 @@ class InvServer(
             if (container.isEmpty()) {
                 // 无容器装箱
                 partSummary.stockQty += change.qty
+                
+                recordChanges(change.part, change.qty, bin, "")
             } else {
                 // 有容器装箱
                 partSummary.processingQty += change.qty
+                
+                recordChanges(change.part, change.qty, bin, "")
             }
             
             summaryRepo.save(partSummary)
@@ -143,9 +156,16 @@ class InvServer(
         
         lines.forEach {
             it.bin = toBin
+            recordChanges(it.part, it.qty, fromBin, toBin)
         }
         
         invLayoutRepo.saveAll(lines)
+    }
+    
+    @Transactional
+    fun recordChanges(part: String, qty: Double, fromBin: String, toBin: String) {
+        val change = InvChange(part = part, qty = qty, fromBin = fromBin, toBin = toBin)
+        changeRepo.save(change)
     }
     
     /**
