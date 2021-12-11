@@ -54,9 +54,16 @@ dependencies {
     
     implementation("mysql:mysql-connector-java")
     
+    implementation("com.squareup.retrofit2:retrofit:2.7.2")
+    implementation("com.squareup.retrofit2:converter-jackson:2.7.2")
+    implementation("com.squareup.retrofit2:converter-jaxb:2.7.2")
+    implementation("com.squareup.retrofit2:converter-scalars:2.7.2")
+    
+    implementation("com.squareup.okhttp3:logging-interceptor:3.12.1")
     
     implementation("org.mongodb:bson:4.3.0")
     
+    implementation("org.apache.commons:commons-lang3:3.9")
     implementation("org.apache.pdfbox:pdfbox:2.0.22")
     
     

@@ -10,6 +10,4 @@ data class WmsUnit(
     var parent: String = "",
     
     var conversionRate: Double = 0.0
-) {
-
-}
+)

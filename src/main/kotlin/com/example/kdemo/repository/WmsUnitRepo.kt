@@ -1,6 +1,7 @@
 package com.example.kdemo.repository
 
 import com.example.kdemo.entity.WmsUnit
+import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository
 
