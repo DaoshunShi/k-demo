@@ -66,6 +66,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.9")
     implementation("org.apache.pdfbox:pdfbox:2.0.22")
     
+    implementation("org.mvel:mvel2:2.4.7.Final")
     
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
