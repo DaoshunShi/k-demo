@@ -49,9 +49,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.4")
     
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    
     implementation("mysql:mysql-connector-java")
     
     implementation("com.squareup.retrofit2:retrofit:2.7.2")

@@ -8,10 +8,12 @@ import javax.persistence.Id
 
 @Entity
 @Data
-data class User(
+data class InvOrder(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Int = 0,
-    var name: String = "",
-    var address: String = ""
+    val id: Int = 0,
+    var part: String = "",
+    var qty: Double = 0.0,
+    val user: String = "",
+    var reserved: Boolean = false
 )
