@@ -1,5 +1,6 @@
 package com.example.kdemo.async
 
+import com.example.kdemo.ObservableError
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Async
 import org.springframework.scheduling.annotation.AsyncResult
@@ -27,5 +28,11 @@ class DemoAsyncService {
     @Async("threadPoolTaskExecutor")
     fun asyncMethodWithConfiguredExecutor() {
         logger.info("Execute method asynchronously 3. ${Thread.currentThread().name}")
+    }
+    
+    @Async
+    fun asyncMethodWithException() {
+        logger.info("Execute method with exception 4. ${Thread.currentThread().name}")
+        throw ObservableError("Async 的异常")
     }
 }

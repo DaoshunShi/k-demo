@@ -39,4 +39,10 @@ class DemoAsyncController(
         logger.info("Receive async-with-configured-executor.")
         demoAsyncService.asyncMethodWithConfiguredExecutor()
     }
+    
+    @PostMapping("async-with-exception")
+    fun asyncWithException() {
+        logger.info("Receive async-with-exception.")
+        demoAsyncService.asyncMethodWithException()
+    }
 }
