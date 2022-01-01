@@ -46,7 +46,7 @@ class ElevatorService {
         getOff(elevator, arrivedPassenger)
         
         // passengers get in
-        val startPassenger = waitingPassengerMap[elevator]?.filter { it -> elevator.up == (it.toFloor > it.fromFloor) }
+        val startPassenger = waitingPassengerMap[elevator.currentFloor]?.filter { it -> elevator.up == (it.toFloor > it.fromFloor) }
             ?: emptyList()
         getIn(elevator, startPassenger)
         
