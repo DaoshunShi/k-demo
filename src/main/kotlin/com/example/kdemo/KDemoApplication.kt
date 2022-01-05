@@ -1,14 +1,17 @@
 package com.example.kdemo
 
+import com.example.kdemo.config.DemoConfig
 import com.example.kdemo.helper.JsonHelper
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.boot.Banner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Primary
 
 @SpringBootApplication
+@EnableConfigurationProperties(DemoConfig::class)
 class KDemoApplication {
     
     @Bean

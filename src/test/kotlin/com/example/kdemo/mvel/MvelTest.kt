@@ -126,6 +126,23 @@ fun testIfExpression() {
 //     println(r)
 // }
 
+fun testEmptyMap() {
+    val expression1 = "inputVariables['testKey']"
+    val expression2 = "inputVariables['testKey'] == empty"
+    val expression3 = "inputVariables.testKey"
+    val expression4 = "[] == empty"
+    val vars = mutableMapOf<String, Any?>("inputVariables" to emptyMap<String, String>())
+    
+    val r1 = MVEL.eval(expression1, vars)
+    println(r1)
+    val r2 = MVEL.eval(expression2, vars)
+    println(r2)
+    // val r3 = MVEL.eval(expression3, vars)
+    // println(r3)
+    var r4 = MVEL.eval(expression4, vars)
+    println(r4)
+}
+
 fun main() {
     // test4Func()
     // test4StrIsBlank()
@@ -137,5 +154,6 @@ fun main() {
     // testInsideFunc()
     // testLambda()
     // testArray()
-    testIfExpression()
+    // testIfExpression()
+    testEmptyMap()
 }
