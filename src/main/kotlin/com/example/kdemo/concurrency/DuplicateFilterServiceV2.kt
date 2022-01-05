@@ -14,7 +14,7 @@ class DuplicateFilterServiceV2 {
     private val lock = Object()
     
     fun lock(k: String, v: String) {
-        logger.debug("${this}")
+        logger.debug("$this")
         var flag = false
         while (true) {
             synchronized(lock) {
