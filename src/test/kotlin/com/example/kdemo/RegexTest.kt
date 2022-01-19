@@ -4,13 +4,18 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 fun main() {
+    val line = "        BindBinContainerBp::class.simpleName!!, \"绑定容器和库位\", inputParams = listOf("
+    val s = "dict.lo(\"key0\")"
+    val str = "绑定容器和库位"
+    println(line.replace(str, s))
     // fun1()
-    fun2()
+    // fun2()
 }
 
 fun fun1() {
     val msg = "Duplicate entry '1234' for key 'wms_warehouse.UK_5vgfkcoe5gis7e8tclk0yydj3'"
-    val pattern = "Duplicate entry '[\\u4E00-\\u9FA5A-Za-z0-9_]+' for key '[\\u4E00-\\u9FA5A-Za-z0-9_.]+'"
+    // val pattern = "Duplicate entry '[\\u4E00-\\u9FA5A-Za-z0-9_]+' for key '[\\u4E00-\\u9FA5A-Za-z0-9_.]+'"
+    val pattern = "entry '[\\u4E00-\\u9FA5A-Za-z0-9_]+' for key '[\\u4E00-\\u9FA5A-Za-z0-9_.]+'"
     
     val r: Pattern = Pattern.compile(pattern)
     val m: Matcher = r.matcher(msg)
@@ -24,6 +29,14 @@ fun fun1() {
         while (m2.find()) {
             println(m2.group())
         }
+    }
+    
+    val pattern3 = "'[\\u4E00-\\u9FA5A-Za-z0-9_.]+'"
+    val r3: Pattern = Pattern.compile(pattern3)
+    val m3 = r3.matcher(msg)
+    println(m3)
+    while (m3.find()) {
+        println(m3.group())
     }
 }
 

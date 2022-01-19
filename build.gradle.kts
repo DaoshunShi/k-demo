@@ -61,19 +61,29 @@ dependencies {
     implementation("org.mongodb:bson:4.3.0")
     
     implementation("org.apache.commons:commons-lang3:3.9")
+    implementation("commons-io:commons-io:2.6")
+    implementation("commons-codec:commons-codec:1.13")
+    
+    implementation("org.apache.velocity:velocity:1.7")
+    
+    implementation("org.apache.logging.log4j:log4j-core:2.16.0")
+    implementation("org.apache.logging.log4j:log4j-api:2.16.0")
+    implementation("org.apache.logging.log4j:log4j-web:2.16.0")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.16.0")
+    implementation("org.slf4j:jul-to-slf4j:1.7.32")
     implementation("org.apache.pdfbox:pdfbox:2.0.22")
     
     implementation("org.mvel:mvel2:2.4.7.Final")
     
     implementation("org.litote.kmongo:kmongo:4.3.0")
-
+    
     // implementation("org.eclipse.milo.sdk-client:0.6.3")
     // implementation("org.eclipse.milo.sdk-server:0.6.3")
     // implementation("org.eclipse.milo.dictionary-manager:0.6.3")
     // implementation("org.eclipse.milo.stack-client:0.6.3")
     // implementation("org.eclipse.milo.stack-client:0.6.3")
     // implementation("com.uchuhimo:konf-core:0.22.1")
-
+    
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     

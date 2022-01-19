@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.core.Version
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.databind.module.SimpleModule
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 
@@ -22,6 +23,14 @@ object JsonHelper {
         configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
     }
+    
+    val yamlMapper = ObjectMapper(YAMLFactory()).apply {
+        // registerModule(JavaTimeModule())
+        registerModule(KotlinModule(nullIsSameAsDefault = true))
+        configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        // disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+    }
+    
 }
 
 class ObjectIdSerializer : JsonSerializer<ObjectId>() {
