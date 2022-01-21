@@ -12,6 +12,8 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
+    implementation.get().exclude("org.springframework.boot", "spring-boot-starter-tomcat")
+    implementation.get().exclude("org.springframework.boot", "spring-boot-starter-logging")
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
     }
@@ -77,11 +79,11 @@ dependencies {
     
     implementation("org.litote.kmongo:kmongo:4.3.0")
     
-    // implementation("org.eclipse.milo.sdk-client:0.6.3")
-    // implementation("org.eclipse.milo.sdk-server:0.6.3")
-    // implementation("org.eclipse.milo.dictionary-manager:0.6.3")
-    // implementation("org.eclipse.milo.stack-client:0.6.3")
-    // implementation("org.eclipse.milo.stack-client:0.6.3")
+    implementation("org.eclipse.milo:sdk-client:0.6.3")
+    implementation("org.eclipse.milo:sdk-server:0.6.3")
+    implementation("org.eclipse.milo:dictionary-manager:0.6.3")
+    implementation("org.eclipse.milo:stack-client:0.6.3")
+    implementation("org.eclipse.milo:stack-core:0.6.3")
     // implementation("com.uchuhimo:konf-core:0.22.1")
     
     compileOnly("org.projectlombok:lombok")
