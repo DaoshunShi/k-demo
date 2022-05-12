@@ -1,6 +1,5 @@
 package com.example.kdemo.okhttp;
 
-
 import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,6 +11,7 @@ public class GetExample {
     String run(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
+                .get()
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
@@ -21,7 +21,8 @@ public class GetExample {
 
     public static void main(String[] args) throws IOException {
         GetExample example = new GetExample();
-        String response = example.run("https://raw.github.com/square/okhttp/master/README.md");
+//        String response = example.run("https://raw.github.com/square/okhttp/master/README.md");
+        String response = example.run("http://localhost:8880/api/mock/cfg");
         System.out.println(response);
     }
 }

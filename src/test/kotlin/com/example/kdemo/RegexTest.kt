@@ -4,12 +4,13 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 fun main() {
-    val line = "        BindBinContainerBp::class.simpleName!!, \"绑定容器和库位\", inputParams = listOf("
-    val s = "dict.lo(\"key0\")"
-    val str = "绑定容器和库位"
-    println(line.replace(str, s))
+    // val line = "        BindBinContainerBp::class.simpleName!!, \"绑定容器和库位\", inputParams = listOf("
+    // val s = "dict.lo(\"key0\")"
+    // val str = "绑定容器和库位"
+    // println(line.replace(str, s))
     // fun1()
     // fun2()
+    test3()
 }
 
 fun fun1() {
@@ -53,4 +54,13 @@ fun fun2() {
         println(m.group(2))
         println(m.group(3))
     }
+}
+
+fun test3() {
+    val str = "!@#)(*&(*%&"
+    val pattern = ".{8,100}"
+    
+    val r = Pattern.compile(pattern)
+    val m = r.matcher(str)
+    println(m.matches())
 }

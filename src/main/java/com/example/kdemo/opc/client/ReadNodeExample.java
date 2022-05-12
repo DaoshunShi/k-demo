@@ -24,7 +24,7 @@ import org.eclipse.milo.opcua.stack.core.types.structured.ServerStatusDataType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ReadNodeExample implements ClientExample {
+class ReadNoadeExample implements ClientExample {
 
     public static void main(String[] args) throws Exception {
         ReadNodeExample example = new ReadNodeExample();

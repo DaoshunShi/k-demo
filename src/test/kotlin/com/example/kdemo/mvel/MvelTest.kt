@@ -143,6 +143,15 @@ fun testEmptyMap() {
     println(r4)
 }
 
+fun testExpression() {
+    val expression1= "value == \"Docking-\" + plc"
+    val key = "plc"
+    val vars = mutableMapOf<String, Any?>("plc" to "2", "value" to "Docking-2")
+    val r = MVEL.eval(expression1, vars)
+    println(r)
+}
+
+
 fun main() {
     // test4Func()
     // test4StrIsBlank()
@@ -155,5 +164,6 @@ fun main() {
     // testLambda()
     // testArray()
     // testIfExpression()
-    testEmptyMap()
+    // testEmptyMap()
+    testExpression()
 }

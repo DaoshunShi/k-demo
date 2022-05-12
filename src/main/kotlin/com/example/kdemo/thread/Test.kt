@@ -1,4 +1,4 @@
-package com.example.kdemo.concurrency
+package com.example.kdemo.thread
 
 
 class Producer : Runnable {

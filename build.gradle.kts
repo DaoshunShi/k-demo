@@ -86,6 +86,8 @@ dependencies {
     implementation("org.eclipse.milo:stack-core:0.6.3")
     // implementation("com.uchuhimo:konf-core:0.22.1")
     
+    implementation("io.netty:netty-all:4.1.65.Final")
+    
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     
